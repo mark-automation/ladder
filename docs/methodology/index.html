@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology · Tier-Ranked Work</title>
+<link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="../">▲ Ladder</a>
+  <div class="nav-links">
+    <a href="../jobs" >Job Feed</a>
+    <a href="../explorer" >Tier Explorer</a>
+    <a href="../methodology" class="on">How Ranking Works</a>
+  </div>
+  <span class="nav-note">MVP demo · deterministic rank v1</span>
+</nav>
+<main>
+<h1>How Ranking Works</h1>
+<p class="sub">Deterministic, versioned, auditable. Every rank references a model version;
+every change writes an immutable event with reasons. ML may assist later — it never becomes
+an opaque authority (blueprint §37).</p>
+
+<div class="grid3">
+  <div class="card">
+    <h3>Applicants — evidence first</h3>
+    <p>Score = skills 35% · experience 25% · outcomes 20% · verifications 10% · leadership 10%.
+    Then absolute evidence gates decide the tier; percentile caps bind only S/SS/SSS and only
+    once a cohort has ≥ 500 assessed members.</p>
+  </div>
+  <div class="card">
+    <h3>Jobs — rubric, not curve</h3>
+    <p>Authority + scope + complexity ± compensation-context modifier. Difficulty is a property
+    of the work. SSS additionally requires top-of-population composite AND ≥50 qualified views —
+    so grandiose postings can't self-promote into rarity.</p>
+  </div>
+  <div class="card">
+    <h3>Companies — behavior only</h3>
+    <p>Payments, satisfaction, completion, disputes, clarity, responsiveness, fairness.
+    No headcount, no brand. New companies cap at B until 20 completed contracts.</p>
+  </div>
+</div>
+
+<section class="card">
+  <h2>Evidence hierarchy</h2>
+  <table class="tbl">
+    <tr><th>Evidence</th><th>Internal weight</th><th>Verified by</th></tr>
+    
+    <tr><td>claim</td><td>1</td>
+        <td>nobody</td></tr>
+    
+    <tr><td>portfolio</td><td>3</td>
+        <td>review</td></tr>
+    
+    <tr><td>verified employment</td><td>6</td>
+        <td>employer check</td></tr>
+    
+    <tr><td>assessment</td><td>7</td>
+        <td>proctored</td></tr>
+    
+    <tr><td>contract executed</td><td>8</td>
+        <td>platform rails</td></tr>
+    
+    <tr><td>contract completed reviewed</td><td>10</td>
+        <td>counterparty review</td></tr>
+    
+    <tr><td>repeat success</td><td>12</td>
+        <td>contract graph</td></tr>
+    
+  </table>
+  <p class="sub">Self-reported claims alone can never exceed tier E — however many you pile up.</p>
+</section>
+
+<section class="card">
+  <h2>Tier gates (applicants)</h2>
+  <table class="tbl">
+    <tr><th>Tier</th><th><span class="chip mini t-E">E</span></th><th><span class="chip mini t-D">D</span></th><th><span class="chip mini t-C">C</span></th><th><span class="chip mini t-B">B</span></th><th><span class="chip mini t-A">A</span></th><th><span class="chip mini t-S">S</span></th><th><span class="chip mini t-SS">SS</span></th><th><span class="chip mini t-SSS">SSS</span></th></tr>
+    <tr><td>Evidence points ≥</td><td>10</td><td>25</td><td>45</td><td>70</td><td>110</td><td>160</td><td>240</td><td>340</td></tr>
+    <tr><td>Completed contracts ≥</td><td>0</td><td>0</td><td>0</td><td>2</td><td>5</td><td>15</td><td>40</td><td>75</td></tr>
+    <tr><td>Percentile floor (top cohorts only)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>top 5.0%</td><td>top 1.0%</td><td>top 0.09999999999999432%</td></tr>
+  </table>
+  <p class="sub">Effective tier = min(evidence gate, percentile cap). Hysteresis (±15 internal points)
+  stops marginal recalculations from flapping your tier.</p>
+</section>
+
+<section class="card">
+  <h2>Matching weights v1</h2>
+  <p><span class="skill">skills coverage 30%</span> <span class="skill">rank fit 20%</span> <span class="skill">comp alignment 15%</span> <span class="skill">availability fit 10%</span> <span class="skill">domain experience 10%</span> <span class="skill">preference band 10%</span> <span class="skill">company quality prior 5%</span> </p>
+  <p class="sub">Output classes: Exceptional / Strong / Good / Possible / Poor. Hard eligibility always runs first —
+  matching can never bypass it.</p>
+</section>
+
+<section class="card">
+  <h2>Model versions in this build</h2>
+  <ul class="plain">
+    <li><code>rank-applicant-v1</code> — applicant ranking</li><li><code>rank-job-v1</code> — job ranking</li><li><code>rank-company-v1</code> — company ranking</li>
+    <li><code>match-v1</code> — two-stage matching</li>
+  </ul>
+</section>
+</main>
+<footer>
+  Ladder MVP — categorical tiers only; internal scores never leave the admin realm.
+  <a href="../architecture/ARCHITECTURE.md">Read the full architecture blueprint →</a>
+</footer>
+</body>
+</html>
