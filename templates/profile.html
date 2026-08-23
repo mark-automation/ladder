@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}{{ a.name }}{% endblock %}
+{% block content %}
+<section class="profile-head card">
+  <span class="chip big t-{{ chip.tier }}">{{ chip.tier }}</span>
+  <div>
+    <h1>{{ a.name }}</h1>
+    <p class="sub">{{ a.headline }}</p>
+    <p>
+      <span class="conf conf-{{ r.confidence_tier|lower }}">Confidence: {{ r.confidence_tier }}</span>
+      · Trust: {{ a.trust_level }}
+      · Prefers {{ a.preferred_min_tier }}–{{ a.preferred_max_tier }}
+      · {{ a.availability_hours }}h/wk · min ${{ '{:,}'.format(a.min_comp) }}/mo
+    </p>
+    <div class="skill-row">
+      {% for s in skills %}<span class="skill">{{ s.skill }} · {{ s.level }}</span>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="grid2">
+  <section class="card">
+    <h2>Path to <span class="chip mini t-{{ next_tier }}">{{ next_tier }}</span></h2>
+    <ul class="progression">
+      <li>{{ '✓' if r.evidence_points >= (gate_pts or 10**9) else '□' }}
+        {{ gate_pts - r.evidence_points if r.evidence_points < (gate_pts or 0) else 'All' }} evidence points
+        for {{ next_tier }} (have {{ r.evidence_points }}{% if gate_pts and r.evidence_points < gate_pts %}, need {{ gate_pts }}{% endif %})</li>
+      {% if contract_gate %}
+      <li>{{ '✓' if contracts_done >= contract_gate else '□' }} {{ contract_gate }} completed contracts (have {{ contracts_done }})</li>
+      {% endif %}
+      <li>{{ '✓' if has_assessment else '□' }} proctored assessment in domain</li>
+      <li class="dim">Deterministic gates — no lottery, no boost purchases. Ever.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Evidence vault</h2>
+    <table class="tbl">
+      {% for e in evidences %}
+      <tr><td>{{ e.type.replace('_',' ') }}</td>
+          <td><span class="{{ 'v-ok' if e.verified else 'v-no' }}">{{ e.v }}</span></td>
+          <td>+{{ e.points }}</td></tr>
+      {% endfor %}
+    </table>
+  </section>
+</div>
+
+<div class="grid2">
+  <section class="card">
+    <h2>Rank history</h2>
+    {% if events %}
+    <table class="tbl">
+      {% for ev in events %}
+      <tr><td>{{ ev.previous_tier or '—' }} → <b>{{ ev.new_tier }}</b></td>
+          <td>{{ ev.trigger_type }}</td><td class="dim">{{ ev.model_version }}</td></tr>
+      {% endfor %}
+    </table>
+    {% else %}<p class="sub">No events yet.</p>{% endif %}
+  </section>
+
+  <section class="card">
+    <h2>Applications</h2>
+    {% if applications %}
+    <table class="tbl">
+      {% for ap in applications %}
+      <tr><td>{{ ap.title }}</td><td>{{ ap.status }}</td>
+          <td>{% if ap.stretch %}<span class="tag stretch-tag">stretch</span>{% endif %}</td></tr>
+      {% endfor %}
+    </table>
+    {% else %}<p class="sub">No applications yet — try the <a href="/jobs">feed</a>.</p>{% endif %}
+  </section>
+</div>
+{% endblock %}
