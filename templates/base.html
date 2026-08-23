@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Ladder{% endblock %} · Tier-Ranked Work</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="/">▲ Ladder</a>
+  <div class="nav-links">
+    <a href="/jobs" {% if request.url.path == '/jobs' %}class="on"{% endif %}>Job Feed</a>
+    <a href="/explorer" {% if request.url.path == '/explorer' %}class="on"{% endif %}>Tier Explorer</a>
+    <a href="/methodology" {% if request.url.path == '/methodology' %}class="on"{% endif %}>How Ranking Works</a>
+  </div>
+  <span class="nav-note">MVP demo · deterministic rank v1</span>
+</nav>
+<main>{% block content %}{% endblock %}</main>
+<footer>
+  Ladder MVP — categorical tiers only; internal scores never leave the admin realm.
+  <a href="/architecture/ARCHITECTURE.md">Read the full architecture blueprint →</a>
+</footer>
+</body>
+</html>
