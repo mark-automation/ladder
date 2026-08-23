@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Admin · Rankings{% endblock %}
+{% block content %}
+<h1>Admin Realm — Internal Ranking View</h1>
+<p class="sub">⚠ This realm exposes internalScore / percentile. It is never reachable through public
+APIs, and a contract test fails CI if numeric rank fields ever leak into public payloads.</p>
+<table class="tbl">
+  <tr><th>Type</th><th>ID</th><th>Rank</th><th>Confidence</th><th>internalScore</th>
+      <th>pct</th><th>evidence pts</th><th>model</th></tr>
+  {% for r in rows %}
+  <tr><td>{{ r.subject_type }}</td><td>{{ r.subject_id }}</td>
+      <td><span class="chip mini t-{{ r.rank_tier }}">{{ r.rank_tier }}</span></td>
+      <td>{{ r.confidence_tier }}</td><td>{{ r.internal_score }}</td>
+      <td>{{ r.percentile if r.percentile is not none else '—' }}</td>
+      <td>{{ r.evidence_points }}</td><td class="dim">{{ r.model_version }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
