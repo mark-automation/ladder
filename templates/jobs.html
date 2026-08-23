@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Job Feed{% endblock %}
+{% block content %}
+<div class="feed-head">
+  <h1>Job Feed</h1>
+  <label class="selector">You are:
+    <select onchange="location.href='/jobs?applicant='+this.value">
+      {% for a in applicants %}
+      <option value="{{ a.id }}" {% if a.id == me.id %}selected{% endif %}>{{ a.name }}</option>
+      {% endfor %}
+    </select>
+    <span class="chip t-{{ my_rank }}">{{ my_rank }}</span>
+    <span class="conf conf-{{ my_confidence|lower }}">{{ my_confidence }}</span>
+  </label>
+</div>
+<p class="sub">{{ n_eligible }} of {{ entries|length }} published jobs are open to you.
+  Preference band {{ me.preferred_min_tier }}–{{ me.preferred_max_tier }} orders the feed; it never blocks.</p>
+
+<div class="feed">
+{% for e in entries %}
+  {% if e.eligible %}
+  <article class="job-card match-{{ e.match_class|lower }}">
+    <div class="job-top">
+      <span class="chip t-{{ e.job.rank }}">{{ e.job.rank }}</span>
+      <b>{{ e.job.title }}</b>
+      <span class="match-chip mc-{{ e.match_class|lower }}">{{ e.match_class }} Match</span>
+      {% if e.stretch %}<span class="tag stretch-tag">stretch ↑</span>{% endif %}
+    </div>
+    <div class="job-meta">
+      <a href="/company/{{ e.job.company.slug }}">{{ e.job.company.name }}</a>
+      · <span class="chip mini t-{{ e.job.company_tier }}">{{ e.job.company_tier }}</span>
+      · ${{ '{:,}'.format(e.job.comp_min) }}–${{ '{:,}'.format(e.job.comp_max) }}/mo
+      · {{ e.job.commitment_hours }}h/wk · {{ e.job.contract_type }}
+      {% if e.job.location_rule == 'same_country' %} · 📍 {{ e.job.country }} only{% endif %}
+    </div>
+    <div class="skill-row">
+      {% for s in e.job.skills_required %}<span class="skill">{{ s.skill }}</span>{% endfor %}
+    </div>
+    <div class="match-reasons">{{ e.match_reasons|join(' · ') }}</div>
+    <form method="post" action="/apply/{{ e.job.id }}" class="inline-form"
+          onsubmit="return applyDemo(this, {{ e.stretch and 'true' or 'false' }})">
+      <input type="hidden" name="applicant_id" value="{{ me.id }}">
+      <button type="submit" {% if not e.stretch %}class="btn"{% else %}class="btn btn-stretch"{% endif %}>Apply</button>
+    </form>
+  </article>
+  {% else %}
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-{{ e.job.rank }}">{{ e.job.rank }}</span>
+      <b>{{ e.job.title }}</b>
+      <span class="lock-reason">🔒 {{ e.reason_copy or e.reason_code }}</span>
+    </div>
+    <div class="job-meta">
+      {{ e.job.company.name }} · needs tier ≥
+      {% if 'CAPABILITY_BELOW_FLOOR' in (e.reason_code or '') %}two tiers above yours{% endif %}
+      <span class="dim">(why: <code>{{ e.reason_code }}</code>)</span>
+    </div>
+  </article>
+  {% endif %}
+{% endfor %}
+</div>
+
+<aside class="legend card">
+  <b>Match classes</b>: <span class="mc-exceptional">Exceptional</span>
+  <span class="mc-strong">Strong</span> <span class="mc-good">Good</span>
+  <span class="mc-possible">Possible</span> — computed from skills coverage, rank fit,
+  compensation alignment, availability, domain, preference band and company quality.
+  Raw scores stay internal.
+</aside>
+<script>
+function applyDemo(form, stretch){
+  event.preventDefault();
+  if (window.LADDER_STATIC) { alert('Static demo — applications need the live API (run locally).'); return false; }
+  fetch('/api/jobs/' + form.action.split('/').pop() + '/apply', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({applicant_id: parseInt(form.applicant_id.value)})
+  }).then(r => r.json()).then(d => {
+    alert(d.status ? ('Applied ✓' + (d.stretch ? ' (stretch application)' : ''))
+                   : ('Blocked: ' + (d.message || d.error)));
+  });
+  return false;
+}
+</script>
+{% endblock %}
