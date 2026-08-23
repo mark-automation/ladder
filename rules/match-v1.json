@@ -1,0 +1,21 @@
+{
+  "model": "match",
+  "version": "v1",
+  "weights": {
+    "skills_coverage": 0.30,
+    "rank_fit": 0.20,
+    "comp_alignment": 0.15,
+    "availability_fit": 0.10,
+    "domain_experience": 0.10,
+    "preference_band": 0.10,
+    "company_quality_prior": 0.05
+  },
+  "eligibility": {
+    "stretch_max_tiers_above_difficulty": 1,
+    "stretch_requires_confidence": "Moderate",
+    "stretch_min_trust": "Identity",
+    "stretch_open_max": 2
+  },
+  "trust_levels": ["Unverified", "Email", "Identity", "Professional", "Highly Verified"],
+  "confidence_order": ["Provisional", "Low", "Moderate", "High", "Verified"]
+}
