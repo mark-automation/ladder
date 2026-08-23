@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home · Tier-Ranked Work</title>
+<link rel="stylesheet" href="./static/styles.css">
+</head>
+<body><script>window.LADDER_STATIC=true;function goVariant(v){var m={};location.href=(m[v]||'./');}</script>
+<nav class="nav">
+  <a class="brand" href="./">▲ Ladder</a>
+  <div class="nav-links">
+    <a href="./jobs" >Job Feed</a>
+    <a href="./explorer" >Tier Explorer</a>
+    <a href="./methodology" >How Ranking Works</a>
+  </div>
+  <span class="nav-note">MVP demo · deterministic rank v1</span>
+</nav>
+<main>
+<section class="hero">
+  <h1>Work, ranked by <em>what you can do</em> — not what you claim.</h1>
+  <p class="sub">Applicants, jobs and companies each belong to a tier from
+    <b>F</b> to <b>SSS</b>. Tiers gate who sees what. Evidence — not self-report — moves you up.</p>
+  <div class="hero-stats">
+    <div><b>24</b><span>applicants ranked</span></div>
+    <div><b>18</b><span>structured jobs</span></div>
+    <div><b>112</b><span>eligible match pairs</span></div>
+  </div>
+</section>
+
+<section class="ladder-visual">
+  
+  <div class="rung r-SSS">
+    <span class="chip t-SSS">SSS</span>
+    <span class="rung-label">One-in-a-thousand, manually audited</span>
+    <span class="rung-counts">
+      0 people · 0 jobs · 0 companies
+    </span>
+  </div>
+  
+  <div class="rung r-SS">
+    <span class="chip t-SS">SS</span>
+    <span class="rung-label">Elite</span>
+    <span class="rung-counts">
+      0 people · 3 jobs · 0 companies
+    </span>
+  </div>
+  
+  <div class="rung r-S">
+    <span class="chip t-S">S</span>
+    <span class="rung-label">Exceptional — leads critical work</span>
+    <span class="rung-counts">
+      2 people · 0 jobs · 1 companies
+    </span>
+  </div>
+  
+  <div class="rung r-A">
+    <span class="chip t-A">A</span>
+    <span class="rung-label">Advanced — senior scope &amp; ownership</span>
+    <span class="rung-counts">
+      4 people · 1 jobs · 1 companies
+    </span>
+  </div>
+  
+  <div class="rung r-B">
+    <span class="chip t-B">B</span>
+    <span class="rung-label">Proven professional</span>
+    <span class="rung-counts">
+      6 people · 3 jobs · 2 companies
+    </span>
+  </div>
+  
+  <div class="rung r-C">
+    <span class="chip t-C">C</span>
+    <span class="rung-label">Solid contributor — owns subsystems</span>
+    <span class="rung-counts">
+      5 people · 2 jobs · 0 companies
+    </span>
+  </div>
+  
+  <div class="rung r-D">
+    <span class="chip t-D">D</span>
+    <span class="rung-label">Established — reliably independent</span>
+    <span class="rung-counts">
+      2 people · 4 jobs · 1 companies
+    </span>
+  </div>
+  
+  <div class="rung r-E">
+    <span class="chip t-E">E</span>
+    <span class="rung-label">Getting started — verified basics</span>
+    <span class="rung-counts">
+      3 people · 3 jobs · 0 companies
+    </span>
+  </div>
+  
+  <div class="rung r-F">
+    <span class="chip t-F">F</span>
+    <span class="rung-label">Entry — build your evidence</span>
+    <span class="rung-counts">
+      2 people · 3 jobs · 1 companies
+    </span>
+  </div>
+  
+</section>
+
+<section class="grid3">
+  <div class="card">
+    <h3>Rank is a group, not a score</h3>
+    <p>You're in <b>A</b> or you're not. No "742 points". Numbers stay internal — the public product speaks in tiers.</p>
+    <a href="./methodology">Why →</a>
+  </div>
+  <div class="card">
+    <h3>Eligibility is a floor, not a ceiling</h3>
+    <p>Apply to work at or below your capability, plus one tier of stretch. What you <i>want</i> orders your feed — it never locks you out.</p>
+    <a href="./explorer">See the matrix →</a>
+  </div>
+  <div class="card">
+    <h3>Completed work outranks claims</h3>
+    <p>Self-reported skill alone can never pass E. Verified contracts, reviews and repeat clients are the only path to S and beyond.</p>
+    <a href="./jobs">Browse the feed →</a>
+  </div>
+</section>
+
+<section class="card note-card">
+  <b>SSS is empty on purpose.</b> It's reserved for roughly the top 0.1% once real population
+  data exists — percentile caps only activate above 500 assessed members per cohort.
+  Rarity is enforced by design, not by accident. <span class="tag">anti-inflation · blueprint §Q</span>
+</section>
+</main>
+<footer>
+  Ladder MVP — categorical tiers only; internal scores never leave the admin realm.
+  <a href="./architecture/ARCHITECTURE.md">Read the full architecture blueprint →</a>
+</footer>
+</body>
+</html>
