@@ -1,0 +1,20 @@
+{
+  "model": "rank-applicant",
+  "version": "v1",
+  "score_weights": {
+    "skill_depth": 350,
+    "experience_complexity": 250,
+    "marketplace_outcomes": 200,
+    "verifications": 100,
+    "leadership_ownership": 100
+  },
+  "assessment_bands": { "novice": 0.25, "competent": 0.5, "advanced": 0.75, "expert": 1.0 },
+  "skill_level_values": { "familiar": 0.25, "working": 0.5, "proficient": 0.75, "expert": 1.0 },
+  "experience_levels": { "junior": 0.3, "mid": 0.55, "senior": 0.8, "lead": 0.95, "principal": 1.0 },
+  "evidence_type_weights": {
+    "claim": 1, "portfolio": 3, "verified_employment": 6, "assessment": 7,
+    "contract_executed": 8, "contract_completed_reviewed": 10, "repeat_success": 12
+  },
+  "self_report_cap_tier": "E",
+  "fraud_display_freeze_states": ["Review", "Restricted", "Suspended"]
+}
