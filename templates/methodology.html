@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Methodology{% endblock %}
+{% block content %}
+<h1>How Ranking Works</h1>
+<p class="sub">Deterministic, versioned, auditable. Every rank references a model version;
+every change writes an immutable event with reasons. ML may assist later — it never becomes
+an opaque authority (blueprint §37).</p>
+
+<div class="grid3">
+  <div class="card">
+    <h3>Applicants — evidence first</h3>
+    <p>Score = skills 35% · experience 25% · outcomes 20% · verifications 10% · leadership 10%.
+    Then absolute evidence gates decide the tier; percentile caps bind only S/SS/SSS and only
+    once a cohort has ≥ {{ min_cohort }} assessed members.</p>
+  </div>
+  <div class="card">
+    <h3>Jobs — rubric, not curve</h3>
+    <p>Authority + scope + complexity ± compensation-context modifier. Difficulty is a property
+    of the work. SSS additionally requires top-of-population composite AND ≥50 qualified views —
+    so grandiose postings can't self-promote into rarity.</p>
+  </div>
+  <div class="card">
+    <h3>Companies — behavior only</h3>
+    <p>Payments, satisfaction, completion, disputes, clarity, responsiveness, fairness.
+    No headcount, no brand. New companies cap at B until 20 completed contracts.</p>
+  </div>
+</div>
+
+<section class="card">
+  <h2>Evidence hierarchy</h2>
+  <table class="tbl">
+    <tr><th>Evidence</th><th>Internal weight</th><th>Verified by</th></tr>
+    {% for t, w in evidence_weights.items() %}
+    <tr><td>{{ t.replace('_', ' ') }}</td><td>{{ w }}</td>
+        <td>{{ {'claim':'nobody','portfolio':'review','verified_employment':'employer check',
+               'assessment':'proctored','contract_executed':'platform rails',
+               'contract_completed_reviewed':'counterparty review','repeat_success':'contract graph'}[t] }}</td></tr>
+    {% endfor %}
+  </table>
+  <p class="sub">Self-reported claims alone can never exceed tier E — however many you pile up.</p>
+</section>
+
+<section class="card">
+  <h2>Tier gates (applicants)</h2>
+  <table class="tbl">
+    <tr><th>Tier</th>{% for g in ['E','D','C','B','A','S','SS','SSS'] %}<th><span class="chip mini t-{{ g }}">{{ g }}</span></th>{% endfor %}</tr>
+    <tr><td>Evidence points ≥</td>{% for g in ['E','D','C','B','A','S','SS','SSS'] %}<td>{{ gates[g] }}</td>{% endfor %}</tr>
+    <tr><td>Completed contracts ≥</td>{% for g in ['E','D','C','B','A','S','SS','SSS'] %}<td>{{ contract_gates.get(g, 0) }}</td>{% endfor %}</tr>
+    <tr><td>Percentile floor (top cohorts only)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>top {{ 100 - caps.S }}%</td><td>top {{ 100 - caps.SS }}%</td><td>top {{ 100 - caps.SSS }}%</td></tr>
+  </table>
+  <p class="sub">Effective tier = min(evidence gate, percentile cap). Hysteresis (±15 internal points)
+  stops marginal recalculations from flapping your tier.</p>
+</section>
+
+<section class="card">
+  <h2>Matching weights v1</h2>
+  <p>{% for k, w in weights_match.items() %}<span class="skill">{{ k.replace('_',' ') }} {{ (w * 100)|round|int }}%</span> {% endfor %}</p>
+  <p class="sub">Output classes: Exceptional / Strong / Good / Possible / Poor. Hard eligibility always runs first —
+  matching can never bypass it.</p>
+</section>
+
+<section class="card">
+  <h2>Model versions in this build</h2>
+  <ul class="plain">
+    {% for k, v in versions.items() %}<li><code>{{ v }}</code> — {{ k }} ranking</li>{% endfor %}
+    <li><code>match-v1</code> — two-stage matching</li>
+  </ul>
+</section>
+{% endblock %}
