@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Feed · Tier-Ranked Work</title>
+<link rel="stylesheet" href="../static/styles.css">
+</head>
+<body><script>window.LADDER_STATIC=true;function goVariant(v){var m={"1": "../jobs/", "3": "../jobs-a3/", "4": "../jobs-a4/", "8": "../jobs-a8/", "14": "../jobs-a14/", "18": "../jobs-a18/", "21": "../jobs-a21/", "23": "../jobs-a23/"};location.href=(m[v]||'./');}</script>
+<nav class="nav">
+  <a class="brand" href="../">▲ Ladder</a>
+  <div class="nav-links">
+    <a href="../jobs" class="on">Job Feed</a>
+    <a href="../explorer" >Tier Explorer</a>
+    <a href="../methodology" >How Ranking Works</a>
+  </div>
+  <span class="nav-note">MVP demo · deterministic rank v1</span>
+</nav>
+<main>
+<div class="feed-head">
+  <h1>Job Feed</h1>
+  <label class="selector">You are:
+    <select onchange="goVariant(this.value)">
+      
+      <option value="1" >Maya Santos</option>
+      
+      <option value="2" >Jonas Weber</option>
+      
+      <option value="3" >Priya Nair</option>
+      
+      <option value="4" >Carlo Reyes</option>
+      
+      <option value="5" >Amara Okafor</option>
+      
+      <option value="6" >Elena Petrova</option>
+      
+      <option value="7" >Tomás Alvarez</option>
+      
+      <option value="8" >Grace Kim</option>
+      
+      <option value="9" >Ahmed Hassan</option>
+      
+      <option value="10" >Bianca Rossi</option>
+      
+      <option value="11" >Diego Ferreira</option>
+      
+      <option value="12" >Linh Tran</option>
+      
+      <option value="13" >Sam O&#39;Neill</option>
+      
+      <option value="14" selected>Yuki Tanaka</option>
+      
+      <option value="15" >Fatima Al-Sayed</option>
+      
+      <option value="16" >Piotr Nowak</option>
+      
+      <option value="17" >Ana García</option>
+      
+      <option value="18" >Omar Farouk</option>
+      
+      <option value="19" >Nadia Popescu</option>
+      
+      <option value="20" >Kenji Sato</option>
+      
+      <option value="21" >Lucia Mendez</option>
+      
+      <option value="22" >Ivan Petrov</option>
+      
+      <option value="23" >Copy-Paste Pete</option>
+      
+      <option value="24" >Bot Account</option>
+      
+    </select>
+    <span class="chip t-C">C</span>
+    <span class="conf conf-moderate">Moderate</span>
+  </label>
+</div>
+<p class="sub">7 of 18 published jobs are open to you.
+  Preference band C–B orders the feed; it never blocks.</p>
+
+<div class="feed">
+
+  
+  <article class="job-card match-good">
+    <div class="job-top">
+      <span class="chip t-C">C</span>
+      <b>Senior Backend Engineer</b>
+      <span class="match-chip mc-good">Good Match</span>
+      
+    </div>
+    <div class="job-meta">
+      <a href="../company/northwind-labs">Northwind Labs</a>
+      · <span class="chip mini t-S">S</span>
+      · $8,000–$11,000/mo
+      · 40h/wk · contract
+      
+    </div>
+    <div class="skill-row">
+      
+    </div>
+    <div class="match-reasons">0/3 skills at required level · gaps: Python, PostgreSQL, AWS · comp aligned · in preferred range · timezone −9h</div>
+    <form method="post" action="../apply/1" class="inline-form"
+          onsubmit="return applyDemo(this, false)">
+      <input type="hidden" name="applicant_id" value="14">
+      <button type="submit" class="btn">Apply</button>
+    </form>
+  </article>
+  
+
+  
+  <article class="job-card match-good">
+    <div class="job-top">
+      <span class="chip t-D">D</span>
+      <b>Data Pipeline Engineer</b>
+      <span class="match-chip mc-good">Good Match</span>
+      
+    </div>
+    <div class="job-meta">
+      <a href="../company/datatide">Datatide Analytics</a>
+      · <span class="chip mini t-A">A</span>
+      · $7,000–$9,500/mo
+      · 40h/wk · contract
+      
+    </div>
+    <div class="skill-row">
+      
+    </div>
+    <div class="match-reasons">0/3 skills at required level · gaps: Python, Airflow, SQL · comp aligned · timezone −9h</div>
+    <form method="post" action="../apply/6" class="inline-form"
+          onsubmit="return applyDemo(this, false)">
+      <input type="hidden" name="applicant_id" value="14">
+      <button type="submit" class="btn">Apply</button>
+    </form>
+  </article>
+  
+
+  
+  <article class="job-card match-good">
+    <div class="job-top">
+      <span class="chip t-F">F</span>
+      <b>Frontend Developer (React)</b>
+      <span class="match-chip mc-good">Good Match</span>
+      
+    </div>
+    <div class="job-meta">
+      <a href="../company/datatide">Datatide Analytics</a>
+      · <span class="chip mini t-A">A</span>
+      · $4,500–$6,500/mo
+      · 30h/wk · contract
+      
+    </div>
+    <div class="skill-row">
+      
+    </div>
+    <div class="match-reasons">1/2 skills at required level · gaps: TypeScript (level) · comp aligned · outside preferred range · timezone −9h</div>
+    <form method="post" action="../apply/7" class="inline-form"
+          onsubmit="return applyDemo(this, false)">
+      <input type="hidden" name="applicant_id" value="14">
+      <button type="submit" class="btn">Apply</button>
+    </form>
+  </article>
+  
+
+  
+  <article class="job-card match-good">
+    <div class="job-top">
+      <span class="chip t-D">D</span>
+      <b>Full-Stack Developer</b>
+      <span class="match-chip mc-good">Good Match</span>
+      
+    </div>
+    <div class="job-meta">
+      <a href="../company/verdant">Verdant Systems</a>
+      · <span class="chip mini t-B">B</span>
+      · $5,500–$7,500/mo
+      · 40h/wk · contract
+      
+    </div>
+    <div class="skill-row">
+      
+    </div>
+    <div class="match-reasons">1/3 skills at required level · gaps: TypeScript (level), Node.js · comp aligned · timezone −9h</div>
+    <form method="post" action="../apply/9" class="inline-form"
+          onsubmit="return applyDemo(this, false)">
+      <input type="hidden" name="applicant_id" value="14">
+      <button type="submit" class="btn">Apply</button>
+    </form>
+  </article>
+  
+
+  
+  <article class="job-card match-good">
+    <div class="job-top">
+      <span class="chip t-D">D</span>
+      <b>DevOps Engineer</b>
+      <span class="match-chip mc-good">Good Match</span>
+      
+    </div>
+    <div class="job-meta">
+      <a href="../company/verdant">Verdant Systems</a>
+      · <span class="chip mini t-B">B</span>
+      · $6,500–$9,000/mo
+      · 35h/wk · contract
+      
+    </div>
+    <div class="skill-row">
+      
+    </div>
+    <div class="match-reasons">0/3 skills at required level · gaps: Docker, Terraform, AWS · comp aligned · timezone −9h</div>
+    <form method="post" action="../apply/10" class="inline-form"
+          onsubmit="return applyDemo(this, false)">
+      <input type="hidden" name="applicant_id" value="14">
+      <button type="submit" class="btn">Apply</button>
+    </form>
+  </article>
+  
+
+  
+  <article class="job-card match-possible">
+    <div class="job-top">
+      <span class="chip t-F">F</span>
+      <b>Junior QA Analyst</b>
+      <span class="match-chip mc-possible">Possible Match</span>
+      
+    </div>
+    <div class="job-meta">
+      <a href="../company/northwind-labs">Northwind Labs</a>
+      · <span class="chip mini t-S">S</span>
+      · $1,800–$2,600/mo
+      · 20h/wk · contract
+      
+    </div>
+    <div class="skill-row">
+      
+    </div>
+    <div class="match-reasons">0/1 skills at required level · gaps: QA · comp aligned · outside preferred range · timezone −9h</div>
+    <form method="post" action="../apply/3" class="inline-form"
+          onsubmit="return applyDemo(this, false)">
+      <input type="hidden" name="applicant_id" value="14">
+      <button type="submit" class="btn">Apply</button>
+    </form>
+  </article>
+  
+
+  
+  <article class="job-card match-possible">
+    <div class="job-top">
+      <span class="chip t-C">C</span>
+      <b>AI Ops Engineer</b>
+      <span class="match-chip mc-possible">Possible Match</span>
+      
+    </div>
+    <div class="job-meta">
+      <a href="../company/halcyon-ai">Halcyon AI</a>
+      · <span class="chip mini t-B">B</span>
+      · $8,500–$11,500/mo
+      · 40h/wk · contract
+      
+    </div>
+    <div class="skill-row">
+      
+    </div>
+    <div class="match-reasons">0/3 skills at required level · gaps: Python, Docker, LLMOps · comp aligned · in preferred range · timezone −9h</div>
+    <form method="post" action="../apply/5" class="inline-form"
+          onsubmit="return applyDemo(this, false)">
+      <input type="hidden" name="applicant_id" value="14">
+      <button type="submit" class="btn">Apply</button>
+    </form>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-SS">SS</span>
+      <b>Staff Platform Architect</b>
+      <span class="lock-reason">🔒 This role needs more verified capability than your current tier.</span>
+    </div>
+    <div class="job-meta">
+      Northwind Labs · needs tier ≥
+      two tiers above yours
+      <span class="dim">(why: <code>CAPABILITY_BELOW_FLOOR</code>)</span>
+    </div>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-A">A</span>
+      <b>ML Engineer — LLM Platform</b>
+      <span class="lock-reason">🔒 This role needs more verified capability than your current tier.</span>
+    </div>
+    <div class="job-meta">
+      Halcyon AI · needs tier ≥
+      two tiers above yours
+      <span class="dim">(why: <code>CAPABILITY_BELOW_FLOOR</code>)</span>
+    </div>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-B">B</span>
+      <b>Analytics Team Lead</b>
+      <span class="lock-reason">🔒 Stretching one tier up needs Moderate confidence and Identity verification.</span>
+    </div>
+    <div class="job-meta">
+      Datatide Analytics · needs tier ≥
+      
+      <span class="dim">(why: <code>STRETCH_EVIDENCE_INSUFFICIENT</code>)</span>
+    </div>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-E">E</span>
+      <b>Backend Developer (GCash rails)</b>
+      <span class="lock-reason">🔒 This role is restricted to another country.</span>
+    </div>
+    <div class="job-meta">
+      Cobre Digital · needs tier ≥
+      
+      <span class="dim">(why: <code>LOCATION_RESTRICTED</code>)</span>
+    </div>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-E">E</span>
+      <b>Mobile Developer (React Native)</b>
+      <span class="lock-reason">🔒 This role is restricted to another country.</span>
+    </div>
+    <div class="job-meta">
+      Cobre Digital · needs tier ≥
+      
+      <span class="dim">(why: <code>LOCATION_RESTRICTED</code>)</span>
+    </div>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-B">B</span>
+      <b>Compliance Lead (scope ⚠ underpaid)</b>
+      <span class="lock-reason">🔒 Stretching one tier up needs Moderate confidence and Identity verification.</span>
+    </div>
+    <div class="job-meta">
+      Cobre Digital · needs tier ≥
+      
+      <span class="dim">(why: <code>STRETCH_EVIDENCE_INSUFFICIENT</code>)</span>
+    </div>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-E">E</span>
+      <b>Enterprise Integration Dev</b>
+      <span class="lock-reason">🔒 Contract type doesn&#39;t match what you offer.</span>
+    </div>
+    <div class="job-meta">
+      Gigantorp Enterprise · needs tier ≥
+      
+      <span class="dim">(why: <code>CONTRACT_TYPE_INCOMPATIBLE</code>)</span>
+    </div>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-B">B</span>
+      <b>Legacy Migration Lead</b>
+      <span class="lock-reason">🔒 Stretching one tier up needs Moderate confidence and Identity verification.</span>
+    </div>
+    <div class="job-meta">
+      Gigantorp Enterprise · needs tier ≥
+      
+      <span class="dim">(why: <code>STRETCH_EVIDENCE_INSUFFICIENT</code>)</span>
+    </div>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-F">F</span>
+      <b>Support Engineer</b>
+      <span class="lock-reason">🔒 Contract type doesn&#39;t match what you offer.</span>
+    </div>
+    <div class="job-meta">
+      Gigantorp Enterprise · needs tier ≥
+      
+      <span class="dim">(why: <code>CONTRACT_TYPE_INCOMPATIBLE</code>)</span>
+    </div>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-SS">SS</span>
+      <b>Principal Distributed Systems Fellow</b>
+      <span class="lock-reason">🔒 This role needs more verified capability than your current tier.</span>
+    </div>
+    <div class="job-meta">
+      Northwind Labs · needs tier ≥
+      two tiers above yours
+      <span class="dim">(why: <code>CAPABILITY_BELOW_FLOOR</code>)</span>
+    </div>
+  </article>
+  
+
+  
+  <article class="job-card locked">
+    <div class="job-top">
+      <span class="chip t-SS">SS</span>
+      <b>Research Engineer — Alignment</b>
+      <span class="lock-reason">🔒 This role needs more verified capability than your current tier.</span>
+    </div>
+    <div class="job-meta">
+      Halcyon AI · needs tier ≥
+      two tiers above yours
+      <span class="dim">(why: <code>CAPABILITY_BELOW_FLOOR</code>)</span>
+    </div>
+  </article>
+  
+
+</div>
+
+<aside class="legend card">
+  <b>Match classes</b>: <span class="mc-exceptional">Exceptional</span>
+  <span class="mc-strong">Strong</span> <span class="mc-good">Good</span>
+  <span class="mc-possible">Possible</span> — computed from skills coverage, rank fit,
+  compensation alignment, availability, domain, preference band and company quality.
+  Raw scores stay internal.
+</aside>
+<script>
+function applyDemo(form, stretch){
+  event.preventDefault();
+  if (window.LADDER_STATIC) { alert('Static demo — applications need the live API (run locally).'); return false; }
+  fetch('/api/jobs/' + form.action.split('/').pop() + '/apply', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({applicant_id: parseInt(form.applicant_id.value)})
+  }).then(r => r.json()).then(d => {
+    alert(d.status ? ('Applied ✓' + (d.stretch ? ' (stretch application)' : ''))
+                   : ('Blocked: ' + (d.message || d.error)));
+  });
+  return false;
+}
+</script>
+</main>
+<footer>
+  Ladder MVP — categorical tiers only; internal scores never leave the admin realm.
+  <a href="../architecture/ARCHITECTURE.md">Read the full architecture blueprint →</a>
+</footer>
+</body>
+</html>
