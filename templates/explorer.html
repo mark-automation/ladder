@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Tier Explorer{% endblock %}
+{% block content %}
+<h1>Tier Explorer</h1>
+<p class="sub">Three independently calibrated systems sharing one vocabulary.
+Applicants: evidence gates first, percentile caps on top tiers only. Jobs: deterministic rubric.
+Companies: behavioral thresholds — size never enters the formula.</p>
+
+<section class="card">
+  <h2>Live tier distribution</h2>
+  <table class="tbl">
+    <tr><th>Tier</th><th>Meaning</th><th>Applicants</th><th>Jobs</th><th>Companies</th></tr>
+    {% for row in dist|reverse %}
+    <tr>
+      <td><span class="chip t-{{ row.tier }}">{{ row.tier }}</span></td>
+      <td>{{ row.label }}</td>
+      <td>{{ row.applicant }}</td><td>{{ row.job }}</td><td>{{ row.company }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</section>
+
+<section class="card">
+  <h2>Eligibility matrix — capability floor + one-tier stretch</h2>
+  <p class="sub">Rows = your capability tier. Columns = job difficulty. A green cell means you can apply;
+  amber is a bounded stretch (needs Moderate confidence + Identity); red is hard-blocked server-side.</p>
+  <table class="tbl matrix">
+    <tr><th>You ↓ / Job →</th>{% for jt in order %}<th><span class="chip mini t-{{ jt }}">{{ jt }}</span></th>{% endfor %}</tr>
+    {% for at in order %}
+    <tr>
+      <th><span class="chip mini t-{{ at }}">{{ at }}</span></th>
+      {% for cell in matrices[at] %}
+      <td class="cell-{{ cell.state }}">{{ {'eligible':'✓','stretch':'↑','blocked':'✕'}[cell.state] }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  <p class="sub">The original concept inverted this grid — top users would have starved while
+  bottom users spammed every elite job. The floor rule fixes both (blueprint §I).</p>
+</section>
+{% endblock %}
