@@ -1,0 +1,20 @@
+{
+  "model": "rank-job",
+  "version": "v1",
+  "authority_points": {
+    "individual_contributor": 5, "technical_owner": 15, "team_lead": 25,
+    "department_lead": 33, "executive": 40
+  },
+  "scope_points": {
+    "single_feature": 5, "product": 15, "department": 25, "company_wide": 35
+  },
+  "complexity_max_points": 25,
+  "comp_modifier_max": 5,
+  "comp_modifier_rules": {
+    "at_or_above_benchmark": 3,
+    "within_15pct_below": 0,
+    "below_15_to_35pct": -2,
+    "below_35pct_plus": -5
+  },
+  "feedback_adjustment_cap_tiers": 1
+}
