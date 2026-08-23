@@ -1,0 +1,17 @@
+{
+  "model": "rank-company",
+  "version": "v1",
+  "signal_weights": {
+    "payment_reliability": 25,
+    "worker_satisfaction": 20,
+    "contract_completion": 15,
+    "dispute_rate_inverse": 12,
+    "job_clarity": 10,
+    "responsiveness": 8,
+    "compensation_fairness": 10
+  },
+  "responsiveness_hours_full_credit": 8,
+  "dispute_rate_zero_credit": 0.0,
+  "dispute_rate_zero_score": 1.0,
+  "dispute_rate_full_penalty": 0.15
+}
