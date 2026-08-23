@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}{{ c.name }}{% endblock %}
+{% block content %}
+<section class="profile-head card">
+  <span class="chip big t-{{ chip.tier }}">{{ chip.tier }}</span>
+  <div>
+    <h1>{{ c.name }}</h1>
+    <p class="sub">{{ c.industry }} · {{ c.country }} · Employer quality: {{ chip.label }}</p>
+    <p><span class="conf conf-{{ r.confidence_tier|lower }}">{{ r.confidence_tier }}</span>
+       · {{ c.contracts_completed }} completed contracts</p>
+  </div>
+</section>
+
+<div class="grid2">
+  <section class="card">
+    <h2>Behavioral quality (public signals)</h2>
+    <table class="tbl">
+      <tr><td>On-time payment</td><td>{{ c.payment_on_time_pct }}%</td></tr>
+      <tr><td>Worker satisfaction</td><td>{{ c.satisfaction_avg }} / 5</td></tr>
+      <tr><td>Contract completion</td><td>{{ c.completion_rate }}%</td></tr>
+      <tr><td>Dispute rate</td><td>{{ (c.dispute_rate * 100)|round(1) }}%</td></tr>
+      <tr><td>Job clarity</td><td>{{ c.clarity_score }}/100</td></tr>
+      <tr><td>Median response</td><td>{{ c.response_hours }}h</td></tr>
+      <tr><td>Comp fairness</td><td>{{ c.comp_fairness }}/100</td></tr>
+    </table>
+    <p class="sub">Size and brand are not inputs. A 2-person shop with great behavior outranks a giant with bad ones.</p>
+  </section>
+
+  <section class="card">
+    <h2>Open roles</h2>
+    {% for j in jobs %}
+    <div class="job-top">
+      <span class="chip t-{{ j.rank }}">{{ j.rank }}</span>
+      <b>{{ j.title }}</b>
+    </div>
+    <div class="job-meta">
+      ${{ '{:,}'.format(j.comp_min) }}–${{ '{:,}'.format(j.comp_max) }}/mo · {{ j.commitment_hours }}h/wk · {{ j.contract_type }}
+      {% if j.rank_label == 'Estimated' %}<span class="tag">estimated</span>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+</div>
+{% endblock %}
