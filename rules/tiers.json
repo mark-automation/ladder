@@ -1,0 +1,65 @@
+{
+  "order": ["F", "E", "D", "C", "B", "A", "S", "SS", "SSS"],
+  "labels": {
+    "F": "Entry — build your evidence",
+    "E": "Getting started — verified basics",
+    "D": "Established — reliably independent",
+    "C": "Solid contributor — owns subsystems",
+    "B": "Proven professional",
+    "A": "Advanced — senior scope & ownership",
+    "S": "Exceptional — leads critical work",
+    "SS": "Elite",
+    "SSS": "One-in-a-thousand, manually audited"
+  },
+  "applicant": {
+    "percentile_caps": { "S": 95.0, "SS": 99.0, "SSS": 99.9 },
+    "gate_evidence_points": { "E": 10, "D": 25, "C": 45, "B": 70, "A": 110, "S": 160, "SS": 240, "SSS": 340 },
+    "gate_contracts_completed": { "B": 2, "A": 5, "S": 15, "SS": 40, "SSS": 75 },
+    "provisional_cap_tier": "C",
+    "min_cohort_for_caps": 500,
+    "hysteresis_margin": 15,
+    "confidence": {
+      "Provisional": { "min_points": 0 },
+      "Low":         { "min_points": 10 },
+      "Moderate":    { "min_points": 30, "requires_verified_evidence": true },
+      "High":        { "min_points": 70, "requires_verified_evidence": true, "requires_assessment": true, "requires_contracts": 2 },
+      "Verified":    { "min_points": 150, "requires_verified_evidence": true, "requires_assessment": true, "requires_contracts": 6, "requires_identity_plus": true }
+    }
+  },
+  "job": {
+    "map": [
+      { "tier": "F",   "min": 0,  "max": 19 },
+      { "tier": "E",   "min": 20, "max": 34 },
+      { "tier": "D",   "min": 35, "max": 49 },
+      { "tier": "C",   "min": 50, "max": 62 },
+      { "tier": "B",   "min": 63, "max": 74 },
+      { "tier": "A",   "min": 75, "max": 84 },
+      { "tier": "S",   "min": 85, "max": 91 },
+      { "tier": "SS",  "min": 92, "max": 96 },
+      { "tier": "SSS", "min": 97, "max": 100 }
+    ],
+    "sss_extra": { "require_top_pct_composite": 0.1, "min_qualified_views": 50 }
+  },
+  "company": {
+    "map": [
+      { "tier": "F",  "min_quality": 0,  "min_contracts": 0 },
+      { "tier": "E",  "min_quality": 50, "min_contracts": 3 },
+      { "tier": "D",  "min_quality": 58, "min_contracts": 5 },
+      { "tier": "C",  "min_quality": 65, "min_contracts": 10 },
+      { "tier": "B",  "min_quality": 72, "min_contracts": 20 },
+      { "tier": "A",  "min_quality": 80, "min_contracts": 40 },
+      { "tier": "S",  "min_quality": 87, "min_contracts": 75 },
+      { "tier": "SS", "min_quality": 93, "min_contracts": 150 },
+      { "tier": "SSS", "min_quality": 97, "min_contracts": 300 }
+    ],
+    "provisional_cap_tier": "B",
+    "provisional_max_contracts": 20
+  },
+  "match_classes": [
+    { "label": "Exceptional", "min": 0.85 },
+    { "label": "Strong", "min": 0.70 },
+    { "label": "Good", "min": 0.55 },
+    { "label": "Possible", "min": 0.40 },
+    { "label": "Poor", "min": 0.00 }
+  ]
+}
