@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tier Explorer · Tier-Ranked Work</title>
+<link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="../">▲ Ladder</a>
+  <div class="nav-links">
+    <a href="../jobs" >Job Feed</a>
+    <a href="../explorer" class="on">Tier Explorer</a>
+    <a href="../methodology" >How Ranking Works</a>
+  </div>
+  <span class="nav-note">MVP demo · deterministic rank v1</span>
+</nav>
+<main>
+<h1>Tier Explorer</h1>
+<p class="sub">Three independently calibrated systems sharing one vocabulary.
+Applicants: evidence gates first, percentile caps on top tiers only. Jobs: deterministic rubric.
+Companies: behavioral thresholds — size never enters the formula.</p>
+
+<section class="card">
+  <h2>Live tier distribution</h2>
+  <table class="tbl">
+    <tr><th>Tier</th><th>Meaning</th><th>Applicants</th><th>Jobs</th><th>Companies</th></tr>
+    
+    <tr>
+      <td><span class="chip t-SSS">SSS</span></td>
+      <td>One-in-a-thousand, manually audited</td>
+      <td>0</td><td>0</td><td>0</td>
+    </tr>
+    
+    <tr>
+      <td><span class="chip t-SS">SS</span></td>
+      <td>Elite</td>
+      <td>0</td><td>3</td><td>0</td>
+    </tr>
+    
+    <tr>
+      <td><span class="chip t-S">S</span></td>
+      <td>Exceptional — leads critical work</td>
+      <td>2</td><td>0</td><td>1</td>
+    </tr>
+    
+    <tr>
+      <td><span class="chip t-A">A</span></td>
+      <td>Advanced — senior scope &amp; ownership</td>
+      <td>4</td><td>1</td><td>1</td>
+    </tr>
+    
+    <tr>
+      <td><span class="chip t-B">B</span></td>
+      <td>Proven professional</td>
+      <td>6</td><td>3</td><td>2</td>
+    </tr>
+    
+    <tr>
+      <td><span class="chip t-C">C</span></td>
+      <td>Solid contributor — owns subsystems</td>
+      <td>5</td><td>2</td><td>0</td>
+    </tr>
+    
+    <tr>
+      <td><span class="chip t-D">D</span></td>
+      <td>Established — reliably independent</td>
+      <td>2</td><td>4</td><td>1</td>
+    </tr>
+    
+    <tr>
+      <td><span class="chip t-E">E</span></td>
+      <td>Getting started — verified basics</td>
+      <td>3</td><td>3</td><td>0</td>
+    </tr>
+    
+    <tr>
+      <td><span class="chip t-F">F</span></td>
+      <td>Entry — build your evidence</td>
+      <td>2</td><td>3</td><td>1</td>
+    </tr>
+    
+  </table>
+</section>
+
+<section class="card">
+  <h2>Eligibility matrix — capability floor + one-tier stretch</h2>
+  <p class="sub">Rows = your capability tier. Columns = job difficulty. A green cell means you can apply;
+  amber is a bounded stretch (needs Moderate confidence + Identity); red is hard-blocked server-side.</p>
+  <table class="tbl matrix">
+    <tr><th>You ↓ / Job →</th><th><span class="chip mini t-F">F</span></th><th><span class="chip mini t-E">E</span></th><th><span class="chip mini t-D">D</span></th><th><span class="chip mini t-C">C</span></th><th><span class="chip mini t-B">B</span></th><th><span class="chip mini t-A">A</span></th><th><span class="chip mini t-S">S</span></th><th><span class="chip mini t-SS">SS</span></th><th><span class="chip mini t-SSS">SSS</span></th></tr>
+    
+    <tr>
+      <th><span class="chip mini t-F">F</span></th>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-stretch">↑</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+    </tr>
+    
+    <tr>
+      <th><span class="chip mini t-E">E</span></th>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-stretch">↑</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+    </tr>
+    
+    <tr>
+      <th><span class="chip mini t-D">D</span></th>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-stretch">↑</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+    </tr>
+    
+    <tr>
+      <th><span class="chip mini t-C">C</span></th>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-stretch">↑</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+    </tr>
+    
+    <tr>
+      <th><span class="chip mini t-B">B</span></th>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-stretch">↑</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+    </tr>
+    
+    <tr>
+      <th><span class="chip mini t-A">A</span></th>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-stretch">↑</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+    </tr>
+    
+    <tr>
+      <th><span class="chip mini t-S">S</span></th>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-stretch">↑</td>
+      
+      <td class="cell-blocked">✕</td>
+      
+    </tr>
+    
+    <tr>
+      <th><span class="chip mini t-SS">SS</span></th>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-stretch">↑</td>
+      
+    </tr>
+    
+    <tr>
+      <th><span class="chip mini t-SSS">SSS</span></th>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+      <td class="cell-eligible">✓</td>
+      
+    </tr>
+    
+  </table>
+  <p class="sub">The original concept inverted this grid — top users would have starved while
+  bottom users spammed every elite job. The floor rule fixes both (blueprint §I).</p>
+</section>
+</main>
+<footer>
+  Ladder MVP — categorical tiers only; internal scores never leave the admin realm.
+  <a href="../architecture/ARCHITECTURE.md">Read the full architecture blueprint →</a>
+</footer>
+</body>
+</html>
