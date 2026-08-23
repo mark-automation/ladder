@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Work, ranked by <em>what you can do</em> — not what you claim.</h1>
+  <p class="sub">Applicants, jobs and companies each belong to a tier from
+    <b>F</b> to <b>SSS</b>. Tiers gate who sees what. Evidence — not self-report — moves you up.</p>
+  <div class="hero-stats">
+    <div><b>{{ n_applicants }}</b><span>applicants ranked</span></div>
+    <div><b>{{ n_jobs }}</b><span>structured jobs</span></div>
+    <div><b>{{ n_matches }}</b><span>eligible match pairs</span></div>
+  </div>
+</section>
+
+<section class="ladder-visual">
+  {% for t in order|reverse %}
+  <div class="rung r-{{ t }}">
+    <span class="chip t-{{ t }}">{{ t }}</span>
+    <span class="rung-label">{{ labels[t] }}</span>
+    <span class="rung-counts">
+      {{ counts[t]['applicant'] }} people · {{ counts[t]['job'] }} jobs · {{ counts[t]['company'] }} companies
+    </span>
+  </div>
+  {% endfor %}
+</section>
+
+<section class="grid3">
+  <div class="card">
+    <h3>Rank is a group, not a score</h3>
+    <p>You're in <b>A</b> or you're not. No "742 points". Numbers stay internal — the public product speaks in tiers.</p>
+    <a href="/methodology">Why →</a>
+  </div>
+  <div class="card">
+    <h3>Eligibility is a floor, not a ceiling</h3>
+    <p>Apply to work at or below your capability, plus one tier of stretch. What you <i>want</i> orders your feed — it never locks you out.</p>
+    <a href="/explorer">See the matrix →</a>
+  </div>
+  <div class="card">
+    <h3>Completed work outranks claims</h3>
+    <p>Self-reported skill alone can never pass E. Verified contracts, reviews and repeat clients are the only path to S and beyond.</p>
+    <a href="/jobs">Browse the feed →</a>
+  </div>
+</section>
+
+<section class="card note-card">
+  <b>SSS is empty on purpose.</b> It's reserved for roughly the top 0.1% once real population
+  data exists — percentile caps only activate above 500 assessed members per cohort.
+  Rarity is enforced by design, not by accident. <span class="tag">anti-inflation · blueprint §Q</span>
+</section>
+{% endblock %}
